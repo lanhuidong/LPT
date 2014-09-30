@@ -7,7 +7,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/logback.log</fileNamePattern>
+            <fileNamePattern>logs/logback-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -16,17 +16,17 @@
 
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%t] %-5p %c{36} - %m%n</pattern>
-            <immediateFlush>false</immediateFlush>
+            <immediateFlush>true</immediateFlush>
             <outputPatternAsHeader>true</outputPatternAsHeader>
         </encoder>
     </appender>
 
-    <logger name="com.nexusy.virgo.web" level="DEBUG" additivity="false">
+    <logger name="com.nexusy.log.logback" level="INFO" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </logger>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>

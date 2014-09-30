@@ -12,6 +12,12 @@ import org.slf4j.LoggerFactory;
 public class LogbackTest {
 
     @Test
+    public void test() {
+        Logger logger = LoggerFactory.getLogger(LogbackTest.class);
+        logger.info("it is a test");
+    }
+
+    @Test
     public void testInfo() {
         Logger logger = LoggerFactory.getLogger(LogbackTest.class);
         long startTime = System.nanoTime();
