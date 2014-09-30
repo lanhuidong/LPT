@@ -1,7 +1,8 @@
 #Intellij Idea
 .idea/
 *.iml
-*.log
+logs/
+target/
 
 # Windows image file caches
 Thumbs.db
