@@ -1,6 +1,7 @@
 package com.nexusy.log.logback;
 
 import com.nexusy.log.Constants;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,8 @@ import org.slf4j.LoggerFactory;
  * @since 2014-09-30
  */
 public class LogbackTest {
+
+    private static long[] times = new long[4];
 
     @Test
     public void test() {
@@ -25,7 +28,7 @@ public class LogbackTest {
             logger.info("it is a test");
         }
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        times[0] = endTime - startTime;
     }
 
     @Test
@@ -36,7 +39,7 @@ public class LogbackTest {
             logger.info("it is a test {}", i);
         }
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        times[1] = endTime - startTime;
     }
 
     @Test
@@ -47,7 +50,7 @@ public class LogbackTest {
             logger.debug("it is a test");
         }
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        times[2] = endTime - startTime;
     }
 
     @Test
@@ -58,6 +61,13 @@ public class LogbackTest {
             logger.debug("it is a test {}", i);
         }
         long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
+        times[3] = endTime - startTime;
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        for (long time : times) {
+            System.out.println(time);
+        }
     }
 }
